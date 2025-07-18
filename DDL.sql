@@ -171,3 +171,28 @@ CREATE TABLE film_text (
     title VARCHAR(255),
     description TEXT
 );
+
+CREATE TABLE cliente_auditoria (
+    auditoria_id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    campo_modificado VARCHAR(50),
+    valor_anterior TEXT,
+    valor_nuevo TEXT,
+    fecha_cambio DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE historial_costos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    film_id INT,
+    costo_anterior DECIMAL(5,2),
+    costo_nuevo DECIMAL(5,2),
+    fecha_cambio DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+CREATE TABLE alquiler_eliminado_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_alquiler INT,
+    id_cliente INT,
+    fecha_eliminacion DATETIME DEFAULT CURRENT_TIMESTAMP
+);
